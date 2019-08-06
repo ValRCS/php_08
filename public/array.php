@@ -16,10 +16,16 @@
     //     echo "\$b[$i] is".$b[$i];
     //     echo "<br>";
     // }
-    foreach ($b as $key => $value) {
-        echo "\$b[$key] is " . $key . ", Value=" . $value;
-        echo "<br>";
+
+    function printArr($arr) {
+        foreach ($arr as $key => $value) {
+            echo "\$arr[$key] is " . $key . ", Value=" . $value;
+            echo "<br>";
+        }
     }
+
+    printArr($b);
+ 
 
 ?>
 </body>
