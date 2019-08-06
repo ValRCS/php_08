@@ -12,8 +12,12 @@
     //rewrite this using foreach syntax so it works
     $b = [1,3,5,53,5,7];
     $b[10]=55;
-    for ($i = 0; $i < count($b); $i++) {
-        echo "\$b[$i] is".$b[$i];
+    // for ($i = 0; $i < count($b); $i++) {
+    //     echo "\$b[$i] is".$b[$i];
+    //     echo "<br>";
+    // }
+    foreach ($b as $key => $value) {
+        echo "\$b[$key] is " . $key . ", Value=" . $value;
         echo "<br>";
     }
 
