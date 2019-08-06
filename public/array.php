@@ -9,6 +9,7 @@
 <body>
     <h1>Array Playground</h1>
 <?php
+    require_once("../src/utilities.php");
     //rewrite this using foreach syntax so it works
     $b = [1,3,5,53,5,7];
     $b[10]=55;
@@ -16,13 +17,6 @@
     //     echo "\$b[$i] is".$b[$i];
     //     echo "<br>";
     // }
-
-    function printArr($arr) {
-        foreach ($arr as $key => $value) {
-            echo "\$arr[$key] is " . $key . ", Value=" . $value;
-            echo "<br>";
-        }
-    }
 
     printArr($b);
  
