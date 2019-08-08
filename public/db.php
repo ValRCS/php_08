@@ -14,11 +14,14 @@
     $sql = "SELECT * FROM tracks";
     $result = $conn->query($sql);
 
+    echo "Got ".$result->num_rows."results<hr>";
+    
     if ($result->num_rows > 0) {
 
         // output data of each row
         while($row = $result->fetch_assoc()) {
             echo "id: " . $row["id"]. " - Name: " . $row["name"]. " " . $row["album"]. "<br>";
+            echo "<hr>";
         }
         echo "<hr>";
     } else {

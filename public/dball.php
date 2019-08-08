@@ -13,7 +13,18 @@
     echo "Host information: " . mysqli_get_host_info($conn) . PHP_EOL;
     echo "<br>";
 
-    $sql = "SELECT * FROM tracks";
+    // prepare and bind
+    $stmt = $conn->prepare("INSERT INTO tracks (name, album, artist) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $mytitle, $myalbum, $myartist); // "sss" means the values are 3 strings (another type is "d" or "f")
+
+    // set parameters and execute
+    $mytitle = "Aluminija Cūka";
+    $myalbum = "Who Knows";
+    $myartist = "Labvelīgais Tips";
+    $stmt->execute();
+
+    //This is a simple example without prepared statement
+    $sql = "SELECT id,name,album,artist FROM tracks";
     $result = $conn->query($sql);
 
     $mydata = $result->fetch_all(MYSQLI_ASSOC);
@@ -23,8 +34,13 @@
         echo "ROW:$key :";
         // var_dump($row);
         echo $row['name'];
+        echo BR;
+        echo $row['artist'];
         echo "<hr>";
+
     }
+
+
 
 
   
