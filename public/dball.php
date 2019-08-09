@@ -14,31 +14,47 @@
     echo "<br>";
 
     // prepare and bind
-    $stmt = $conn->prepare("INSERT INTO tracks (name, album, artist) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $mytitle, $myalbum, $myartist); // "sss" means the values are 3 strings (another type is "d" or "f")
+    // $stmt = $conn->prepare("INSERT INTO tracks (name, album, artist) VALUES (?, ?, ?)");
+    // $stmt->bind_param("sss", $mytitle, $myalbum, $myartist); // "sss" means the values are 3 strings (another type is "d" or "f")
 
-    // set parameters and execute
-    $mytitle = "Aluminija Cūka";
-    $myalbum = "Who Knows";
-    $myartist = "Labvelīgais Tips";
-    $stmt->execute();
+    // // set parameters and execute
+    // $mytitle = "Aluminija Cūka";
+    // $myalbum = "Who Knows";
+    // $myartist = "Labvelīgais Tips";
+    // $stmt->execute();
 
     //This is a simple example without prepared statement
-    $sql = "SELECT id,name,album,artist FROM tracks";
+    // $sql = "SELECT id,name,album,artist FROM tracks";
+    $sql = "SELECT * FROM tracks";
     $result = $conn->query($sql);
 
     $mydata = $result->fetch_all(MYSQLI_ASSOC);
+    $columnNames = $result->fetch_fields();
     mysqli_close($conn);
 
-    foreach ($mydata as $key => $row) {
-        echo "ROW:$key :";
-        // var_dump($row);
-        echo $row['name'];
-        echo BR;
-        echo $row['artist'];
-        echo "<hr>";
-
+    //table starts here
+    echo "<table class='mytablestyle' style='border: 2px solid black' >";
+    $isHeaderDone = FALSE;
+    foreach ($mydata as $row) {
+        if (!$isHeaderDone) {
+            echo "<thead><tr>";
+            foreach ($row as $key => $cell) {
+                echo "<td>".$key."</td>";
+            }
+            echo "</tr></thead>";
+            $isHeaderDone = TRUE;
+            echo "<tbody>";
+        }
+        echo "<tr>";
+        foreach ($row as $cell) {
+            echo "<td>".$cell."</td>";
+        }
+        echo "</tr>";
     }
+    if ($isHeaderDone) echo "</tbody>";
+    echo "</table>";
+
+    var_dump($mydata);
 
 
 
