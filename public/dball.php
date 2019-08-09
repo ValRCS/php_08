@@ -32,26 +32,36 @@
     $columnNames = $result->fetch_fields();
     mysqli_close($conn);
 
+    // var_dump($columnNames);
     //table starts here
     echo "<table class='mytablestyle' style='border: 2px solid black' >";
     $isHeaderDone = FALSE;
+    //printing header with column names
+    echo "<thead><tr>";
+    foreach ($columnNames as $col) {
+        echo "<td>".$col->name."</td>";
+    }
+    echo "</tr></thead>";
+
+    echo "<tbody>";
     foreach ($mydata as $row) {
-        if (!$isHeaderDone) {
-            echo "<thead><tr>";
-            foreach ($row as $key => $cell) {
-                echo "<td>".$key."</td>";
-            }
-            echo "</tr></thead>";
-            $isHeaderDone = TRUE;
-            echo "<tbody>";
-        }
+        // if (!$isHeaderDone) {
+        //     echo "<thead><tr>";
+        //     foreach ($row as $key => $cell) {
+        //         echo "<td>".$key."</td>";
+        //     }
+        //     echo "</tr></thead>";
+        //     $isHeaderDone = TRUE;
+        //     echo "<tbody>";
+        // }
         echo "<tr>";
         foreach ($row as $cell) {
             echo "<td>".$cell."</td>";
         }
         echo "</tr>";
     }
-    if ($isHeaderDone) echo "</tbody>";
+    // if ($isHeaderDone) echo "</tbody>";
+    echo "</tbody>";
     echo "</table>";
 
     var_dump($mydata);
