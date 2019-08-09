@@ -11,6 +11,7 @@
    <a href="submit.php?maxsongs=10">Max 10</a>
    <a href="submit.php?order=ASC">Order By Ascending Title</a>
 <?php
+    echo $_SERVER['REQUEST_METHOD']."<HR>";
     $qry = "SELECT * FROM tracks"; 
     if (isset($_GET["maxsongs"])) {
         $qry .= " LIMIT ".$_GET["maxsongs"]; //FIXME add sanitization!!!
