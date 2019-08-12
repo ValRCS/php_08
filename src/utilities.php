@@ -14,7 +14,7 @@ function printTable($result, $classesCSS) {
 
     // echo "<form method='POST' action='delete.php'>";
     // var_dump($data);
-    print_r(array_keys($columns));
+    // print_r(array_keys($columns));
 
     echo "<table class=$classesCSS>";
     //printing header with column names
@@ -40,7 +40,7 @@ function printTable($result, $classesCSS) {
                 echo "<td><form method='POST' action='delete.php'>";
                 echo "<button type='submit' name='uid' value=".$cell.">DELETE</button></form></td>";
             } else if ($key == 1) {
-                echo "<td class='songname' value=$myid id=r$myid>".$cell."</td>";
+                echo "<td class='songname' value=$myid id=r$myid contenteditable>".$cell."</td>";
             } else if ($key == 2) {
                 echo "<td><form method='POST' action='update.php'>";
                 echo "<input name='content' value=".$cell." >";
