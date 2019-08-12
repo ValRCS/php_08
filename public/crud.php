@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require_once("../src/utilities.php");
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         $conn = mysqli_connect(SERVER, USER, PW, DB);
@@ -27,6 +28,7 @@
     }
 
     require_once("../src/head.php");
+    if (isset($_SESSION['uname'])) echo "Hello".$_SESSION['uname']."<br>";
 ?>
     <form action="crud.php" method="POST">
         <input name="title" required>
