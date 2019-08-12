@@ -12,6 +12,7 @@ function printTable($result, $classesCSS) {
     $data=$result->fetch_all();
     $columns=$result->fetch_fields();
 
+    // echo "<form method='POST' action='delete.php'>";
     echo "<table class=$classesCSS>";
     //printing header with column names
     echo "<thead><tr>";
@@ -23,13 +24,25 @@ function printTable($result, $classesCSS) {
     echo "<tbody>";
     foreach ($data as $row) {
         echo "<tr>";
-        foreach ($row as $cell) {
-            echo "<td>".$cell."</td>";
+        
+        // echo "<input type='checkbox' name='pid'>";
+        // echo '<button type="submit">DELETE</button>';
+        foreach ($row as $key => $cell) {
+            if ($key == 'id') {
+                echo "<td id=".$cell.">".$cell."</td>";
+                // echo "<td><input type='checkbox' name='pid'".$cell."></td>";
+                echo "<td><form method='POST' action='delete.php'>";
+                echo "<button type='submit' name='uid' value=".$cell.">DELETE</button></form></td>";
+            } else {
+                echo "<td>".$cell."</td>";
+            }
+
         }
         echo "</tr>";
     }
     echo "</tbody>";
     echo "</table>";
+    echo "</form>";
 }
 
 function getRows($sql) {
