@@ -13,6 +13,9 @@ function printTable($result, $classesCSS) {
     $columns=$result->fetch_fields();
 
     // echo "<form method='POST' action='delete.php'>";
+    // var_dump($data);
+    print_r(array_keys($columns));
+
     echo "<table class=$classesCSS>";
     //printing header with column names
     echo "<thead><tr>";
@@ -27,12 +30,19 @@ function printTable($result, $classesCSS) {
         
         // echo "<input type='checkbox' name='pid'>";
         // echo '<button type="submit">DELETE</button>';
+        $id = "0"; //TODO check if id exists
+
         foreach ($row as $key => $cell) {
             if ($key == 'id') {
+                $myid = $cell;
                 echo "<td id=".$cell.">".$cell."</td>";
                 // echo "<td><input type='checkbox' name='pid'".$cell."></td>";
                 echo "<td><form method='POST' action='delete.php'>";
                 echo "<button type='submit' name='uid' value=".$cell.">DELETE</button></form></td>";
+            } else if ($key == 2) {
+                echo "<td><form method='POST' action='update.php'>";
+                echo "<input name='content' value=".$cell." >";
+                echo "<button type='submit' name='uid' value=".$myid.">UPDATE</button></form></td>";
             } else {
                 echo "<td>".$cell."</td>";
             }
