@@ -39,6 +39,8 @@ function printTable($result, $classesCSS) {
                 // echo "<td><input type='checkbox' name='pid'".$cell."></td>";
                 echo "<td><form method='POST' action='delete.php'>";
                 echo "<button type='submit' name='uid' value=".$cell.">DELETE</button></form></td>";
+            } else if ($key == 1) {
+                echo "<td class='songname' value=$myid id=r$myid>".$cell."</td>";
             } else if ($key == 2) {
                 echo "<td><form method='POST' action='update.php'>";
                 echo "<input name='content' value=".$cell." >";
