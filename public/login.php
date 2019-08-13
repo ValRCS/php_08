@@ -2,6 +2,14 @@
     session_start();
     require_once("../src/utilities.php");
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST['logout'])) {
+            unset($_SESSION['id']);
+            unset($_SESSION['username']);
+            echo "We are logged out";
+            header("Location: login.php");
+            //so the rest of the code should not execute here
+        }
+
         $conn = mysqli_connect(SERVER, USER, PW, DB);
 
         if (!$conn) {
@@ -48,5 +56,6 @@
     Login<input name = "uname">
     Password
     <input name="pw">
-    <button type="submit">LOGIN</button>
+    <button type="submit" name="login">LOGIN</button>
+    <button type="submit" name="logout">LOGOUT</button>
 </form>

@@ -47,12 +47,10 @@
  
     if (isset($_SESSION["id"])) {
         $qry = "SELECT * FROM tracks WHERE uid = ".$_SESSION["id"].";"; 
-    } else {
-        //maybe you dont want to show anything when not logged in
-        $qry = "SELECT * FROM tracks"; 
-    }
+        printTable(getRows($qry), "mytablestyle");
+    } 
     
-    printTable(getRows($qry), "mytablestyle");
+    
 
 
     require_once("../src/foot.php");
