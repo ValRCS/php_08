@@ -10,12 +10,15 @@
             echo "Debugging error: " . mysqli_connect_error() . PHP_EOL;
             exit;
         }
+        //TODO field validation from https://www.php.net/book.filter
         $username = $_POST["uname"] ;
         $lastname = $_POST["lastname"];
         $email = $_POST["email"];
         $pwhash = "BadHash";
         if ($_POST["pw"] == $_POST["pw2"] ) {
             $pwhash = password_hash($_POST["pw"], PASSWORD_DEFAULT);
+        } else {
+            header("Location: register.php");
         }
         
         $stmt = $conn->prepare("INSERT INTO users (username, lastname, email, pwhash) VALUES (?, ?, ?, ?)");
