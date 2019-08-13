@@ -12,7 +12,10 @@
         }
         //TODO field validation from https://www.php.net/book.filter
         $username = $_POST["uname"] ;
-        $lastname = $_POST["lastname"];
+        $lastname = "";
+        if (isset($_POST["lastname"])) $lastname = $_POST["lastname"];
+        
+        //TODo same for email
         $email = $_POST["email"];
         $pwhash = "BadHash";
         if ($_POST["pw"] == $_POST["pw2"] ) {
