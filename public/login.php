@@ -44,6 +44,12 @@
             $_SESSION['id'] = $row['id'];
             $_SESSION['username'] = $username;
             echo $username."is logged in<br>";
+            if (isset($_POST['savelogin'])) {
+                echo "Saving Loggin";
+                //TODO think about safety!
+                setcookie("TestCookie", $_SESSION['username'], time()+3600);
+                //setcookie here
+            }
         }
        
         // $_SESSION['uname'] = $_POST['uname'];
@@ -53,9 +59,11 @@
 ?>
 
 <form method="POST" action="login.php">
+    Save Login<input type="checkbox" name="savelogin">
     Login<input name = "uname">
     Password
     <input name="pw">
     <button type="submit" name="login">LOGIN</button>
     <button type="submit" name="logout">LOGOUT</button>
+    
 </form>
