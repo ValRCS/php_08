@@ -35,6 +35,10 @@
         echo "Hello".$_SESSION['username'];
         echo "Your ID".$_SESSION['id']."<br>";
     }
+    if (isset($_COOKIE['TestCookie'])) {
+        echo "Aha! Your cookie name is: ".$_COOKIE['TestCookie'];
+        echo "<br>";
+    }
 
 ?>
     <form action="crud.php" method="POST">
