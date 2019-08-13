@@ -16,8 +16,11 @@
         if (isset($_POST["title"])) $mytitle = $_POST["title"];
         if (isset($_POST["album"])) $myalbum = $_POST["album"];
         if (isset($_POST["artist"])) $myartist = $_POST["artist"];
-        $stmt = $conn->prepare("INSERT INTO tracks (name, album, artist) VALUES (?, ?, ?)");
-        $stmt->bind_param("sss", $mytitle, $myalbum, $myartist); // "sss" means the values are 3 strings (another type is "d" or "f")
+        if (!isset($_SESSION['id'])) {
+            header("Location: tough.php");
+        }
+        $stmt = $conn->prepare("INSERT INTO tracks (name, album, artist, uid) VALUES (?, ?, ?, ?)");
+        $stmt->bind_param("sssd", $mytitle, $myalbum, $myartist, $_SESSION['id']); // "sss" means the values are 3 strings (another type is "d" or "f")
 
         // set parameters and execute
 
@@ -28,7 +31,11 @@
     }
 
     require_once("../src/head.php");
-    if (isset($_SESSION['uname'])) echo "Hello".$_SESSION['uname']."<br>";
+    if (isset($_SESSION['username'])) {
+        echo "Hello".$_SESSION['username'];
+        echo "Your ID".$_SESSION['id']."<br>";
+    }
+
 ?>
     <form action="crud.php" method="POST">
         <input name="title" required>
@@ -38,8 +45,13 @@
     </form>
 <?php
  
+    if (isset($_SESSION["id"])) {
+        $qry = "SELECT * FROM tracks WHERE uid = ".$_SESSION["id"].";"; 
+    } else {
+        //maybe you dont want to show anything when not logged in
+        $qry = "SELECT * FROM tracks"; 
+    }
     
-    $qry = "SELECT * FROM tracks"; 
     printTable(getRows($qry), "mytablestyle");
 
 
