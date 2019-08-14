@@ -1,8 +1,9 @@
 <?php
+    //TODO use session as well
     require_once("../src/utilities.php");
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         // echo "Deleting!";
-        if (isset($_POST["uid"])) {
+        if (isset($_POST["id"])) {
             // echo "Going to delete a post with id".$_POST["uid"];
             $conn = mysqli_connect(SERVER, USER, PW, DB);
 
@@ -17,7 +18,7 @@
                 $content = "EMPTY!";
             }
             $stmt = $conn->prepare("UPDATE tracks SET artist = ? WHERE id = ?;");
-            $stmt->bind_param("ss",  $content, $_POST["uid"]); // "sss" means the values are 3 strings (another type is "d" or "f")
+            $stmt->bind_param("ss",  $content, $_POST["id"]); // "sss" means the values are 3 strings (another type is "d" or "f")
 
             // set parameters and execute
 

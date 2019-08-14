@@ -44,7 +44,7 @@ function printTable($result, $classesCSS) {
             } else if ($key == 2) {
                 echo "<td><form method='POST' action='update.php'>";
                 echo "<input name='content' value=".$cell." >";
-                echo "<button type='submit' name='uid' value=".$myid.">UPDATE</button></form></td>";
+                echo "<button type='submit' name='id' value=".$myid.">UPDATE</button></form></td>";
             } else {
                 echo "<td>".$cell."</td>";
             }
