@@ -9,7 +9,7 @@ function printArr($arr) {
 }
 
 function printTable($result, $classesCSS) {
-    $data=$result->fetch_all();
+    $data=$result->fetch_all(); //TODO fetch data as named keys => values
     $columns=$result->fetch_fields();
 
     // echo "<form method='POST' action='delete.php'>";
