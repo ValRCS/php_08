@@ -14,6 +14,7 @@
             echo "Created new DB! $this->fullname<hr>";
         }
 
+        //deconstructor gets called when the objects are destroyed (typically at the end of program)
         public function __destruct() {
             echo "Destroyed ".$this->fullname;
         }

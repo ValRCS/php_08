@@ -17,4 +17,4 @@
     $mydb2->setSecret("bumbieris");
 
     echo "My secret is".$mydb2->getSecret()."<hr>";
-
+    //deconstructors (if any) will be called here
