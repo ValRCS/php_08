@@ -1,14 +1,14 @@
 <?php
-    //here we create a new class instance based on our DB declaration
-    require_once("../src/DB.php");
-    echo DB::$myvar;
-    DB::$myvar++;
-    echo DB::$myvar;
-    DB::$myvar++;
+    //here we create a new class instance based on our ExampleClass declaration
+    require_once("../src/ExampleClass.php");
+    echo ExampleClass::$myvar;
+    ExampleClass::$myvar++;
+    echo ExampleClass::$myvar;
+    ExampleClass::$myvar++;
     echo "<hr>";
 
-    $mydb = new DB(5);
-    $mydb2 = new DB("bobobo");
+    $mydb = new ExampleClass(5);
+    $mydb2 = new ExampleClass("bobobo");
     echo "my first db ".$mydb->name."<hr>";
     echo "my second db ".$mydb2->name."<hr>";
     //generally not a good practice to change object properties directly
@@ -26,7 +26,7 @@
 
     //constants live inside overall class not each object!
     echo $mydb::PI . "<hr>";
-    echo DB::PI;
+    echo ExampleClass::PI;
     echo "<hr>";
 
     //here we call a method to modify a static variable

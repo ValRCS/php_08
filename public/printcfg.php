@@ -3,3 +3,4 @@
     echo "Printing Config<hr>";
     echo CFG::SERVER;
     echo "<hr>";
+    echo CFG::DB;

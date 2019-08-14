@@ -1,5 +1,5 @@
 <?php
-    class DB {
+    class ExampleClass {
         //code goes here
         const PI = 3.14;
 
@@ -50,6 +50,5 @@
         private function printAnything($text) {
             echo "Printing some text:".$text."<hr>";
         }
-
         
     }
