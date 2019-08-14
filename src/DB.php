@@ -1,6 +1,12 @@
 <?php
     class DB {
         //code goes here
+        const PI = 3.14;
+
+        //this means there is only ONE variable for whole class
+        //and it is publicly accesible
+        static public $myvar = 0;
+
         public $name = "My db";
         
         //for private use only inside class instance
@@ -12,6 +18,11 @@
         public function __construct($text) {
             $this->fullname = $this->name . $text;
             echo "Created new DB! $this->fullname<hr>";
+        }
+
+        public function add($val) {
+            self::$myvar += $val;
+            echo self::$myvar . "<hr>";
         }
 
         //deconstructor gets called when the objects are destroyed (typically at the end of program)
