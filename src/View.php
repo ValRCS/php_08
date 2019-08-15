@@ -23,4 +23,31 @@ MYHEAD; //we have to place MYHEAD (or whatever we chose) at START of the LINE!!!
         public function getFoot() {
             return "</body></html>";
         }
+
+        public function getLogin() {
+            $str = <<<MYLOGIN
+            <form method="POST" action="login.php">
+    Save Login<input type="checkbox" name="savelogin">
+    Login<input name = "uname">
+    Password
+    <input name="pw">
+    <button type="submit" name="login">LOGIN</button>
+    <button type="submit" name="logout">LOGOUT</button>
+    
+</form>
+MYLOGIN;
+            return $str;
+        }
+
+        public function getSubmit() {
+            $str = <<<MYSUBMIT
+            <form action="songs.php" method="POST">
+            <input name="title" required="">
+            <input name="artist" placeholder="Enter artist">
+            <input name="album" value="">
+            <button type="submit">SUBMIT</button>
+        </form>
+MYSUBMIT;
+            return $str;
+        }
     }

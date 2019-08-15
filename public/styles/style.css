@@ -1,3 +1,9 @@
 .mytablestyle {
     border: 2px solid black;
 }
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: auto auto;
+}

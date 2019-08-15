@@ -22,7 +22,9 @@
 
         public function getTracks($uid) {
             $result = null;
-            $qry = "SELECT * FROM tracks WHERE uid = ".$uid.";"; 
+            //per spec show all if not logged in
+            if (!$uid) $qry = "SELECT * FROM tracks";
+            else $qry = "SELECT * FROM tracks WHERE uid = ".$uid.";"; 
             $result = $this->db->query($qry);
             //key is to return someting which is a general type of data structure
             //in this case we return an associative array;
