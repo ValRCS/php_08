@@ -16,7 +16,7 @@
                 exit;
                 //maybe return null?
             }
-            echo "Connection successful!";
+            // echo "Connection successful!";
             return $conn;
         }
 
