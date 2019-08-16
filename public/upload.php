@@ -38,6 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     } else {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             echo "The file ". basename( $_FILES["fileToUpload"]["name"]). " has been uploaded.";
+            echo "The file address is".$target_file;
+            echo "<hr><img src='$target_file' alt='myalt' ><hr>";
+            //TODO here we add file path $target_dir to our database/model
         } else {
             echo "Sorry, there was an error uploading your file.";
         }
